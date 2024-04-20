@@ -1,0 +1,39 @@
+openapi: '3.0.2'
+info:
+  title: API de Libros
+  version: '1.0.0'
+servers:
+  - url: http://localhost:8585
+paths:
+  /libros:
+    get:
+      summary: Obtener todos los libros
+      description: Retorna un listado de libros
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/Book"
+              example:
+                - id: 1
+                  titulo: "El principito"
+                  autor: "Antoine de Saint"
+                - id: 2
+                  titulo: "La Divina Comedia"
+                  autor: "Dante Alighieri"
+
+components:
+  schemas:
+    Book:
+      type: object
+      properties:
+        id:
+          type: string
+        titulo:
+          type: string
+        autor:
+          type: string
